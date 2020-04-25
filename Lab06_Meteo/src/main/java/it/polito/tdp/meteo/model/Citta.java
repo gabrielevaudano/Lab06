@@ -1,5 +1,6 @@
 package it.polito.tdp.meteo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Citta {
@@ -7,17 +8,39 @@ public class Citta {
 	
 	private String nome;
 	private List<Rilevamento> rilevamenti;
-	private int counter = 0;
-	
-	
+	private Integer counter;
+	private Integer continuousCounter;
 	
 	public Citta(String nome) {
 		this.nome = nome;
+		this.counter = 0;
+		this.rilevamenti = new ArrayList<Rilevamento>();
+		this.continuousCounter = 0;
 	}
 	
 	public Citta(String nome, List<Rilevamento> rilevamenti) {
 		this.nome = nome;
 		this.rilevamenti = rilevamenti;
+		this.counter=0;
+		this.continuousCounter = 0;
+
+
+	}
+
+	
+	
+	/**
+	 * @return the continuousCounter
+	 */
+	public Integer getContinuousCounter() {
+		return continuousCounter;
+	}
+
+	/**
+	 * @param continuousCounter the continuousCounter to set
+	 */
+	public void setContinuousCounter(Integer continuousCounter) {
+		this.continuousCounter = continuousCounter;
 	}
 
 	public String getNome() {
@@ -34,6 +57,14 @@ public class Citta {
 
 	public void setRilevamenti(List<Rilevamento> rilevamenti) {
 		this.rilevamenti = rilevamenti;
+	}
+	
+	public void setRilevamento(Rilevamento rilevamenti) {
+		this.rilevamenti.add(new Rilevamento(rilevamenti));
+	}
+	
+	public void removetRilevamento(Rilevamento rilevamenti) {
+		this.rilevamenti.remove(new Rilevamento(rilevamenti));
 	}
 
 	public int getCounter() {
@@ -76,6 +107,20 @@ public class Citta {
 	@Override
 	public String toString() {
 		return nome;
+	}
+
+	public void decreaseCounter() {
+		this.counter--;
+		
+	}
+
+	public void increaseCCounter() {
+		this.continuousCounter++;
+	}
+
+	public void decreaseCCounter() {
+		this.continuousCounter--;
+		
 	}
 	
 

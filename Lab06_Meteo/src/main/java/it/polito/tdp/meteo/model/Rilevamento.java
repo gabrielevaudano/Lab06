@@ -4,21 +4,27 @@ import java.util.Date;
 
 public class Rilevamento {
 	
-	private String localita;
+	private Citta localita;
 	private Date data;
 	private int umidita;
 
-	public Rilevamento(String localita, Date data, int umidita) {
+	public Rilevamento(Citta localita, Date data, int umidita) {
 		this.localita = localita;
 		this.data = data;
 		this.umidita = umidita;
 	}
 
-	public String getLocalita() {
+	public Rilevamento(Rilevamento rilevamenti) {
+		this.localita = rilevamenti.localita;
+		this.data = rilevamenti.data;
+		this.umidita = rilevamenti.umidita;
+	}
+
+	public Citta getLocalita() {
 		return localita;
 	}
 
-	public void setLocalita(String localita) {
+	public void setLocalita(Citta localita) {
 		this.localita = localita;
 	}
 
@@ -45,7 +51,7 @@ public class Rilevamento {
 
 	@Override
 	public String toString() {
-		return String.valueOf(umidita);
+		return this.getLocalita() + " " + String.valueOf(umidita);
 	}
 
 	
